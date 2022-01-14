@@ -1,6 +1,7 @@
-pragma solidity >=0.8.0 <0.9.0;
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8;
 
-import "hardhat/console.sol";
+import 'hardhat/console.sol';
 
 contract Counter {
     uint256 count = 0;
@@ -12,9 +13,9 @@ contract Counter {
     }
 
     function countUp() public returns (uint256) {
-        console.log("countUp: count =", count);
+        console.log('countUp: count =', count);
         uint256 newCount = count + 1;
-        require(newCount > count, "Uint256 overflow");
+        require(newCount > count, 'Uint256 overflow');
 
         count = newCount;
 
@@ -23,9 +24,9 @@ contract Counter {
     }
 
     function countDown() public returns (uint256) {
-        console.log("countDown: count =", count);
+        console.log('countDown: count =', count);
         uint256 newCount = count - 1;
-        require(newCount < count, "Uint256 underflow");
+        require(newCount < count, 'Uint256 underflow');
 
         count = newCount;
 

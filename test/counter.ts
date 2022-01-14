@@ -1,20 +1,19 @@
-import { ethers } from 'hardhat'
 import chai from 'chai'
 import chaiAsPromised from 'chai-as-promised'
-import { Counter__factory, Counter } from '../typechain'
+import { Counter } from '../typechain'
+import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers'
+import { CounterFixture } from './fixtures/CounterFixture'
 
 chai.use(chaiAsPromised)
 const { expect } = chai
 
 describe('Counter', () => {
   let counter: Counter
+  let alice: SignerWithAddress
 
   beforeEach(async () => {
-    const signers = await ethers.getSigners()
-
-    const counterFactory = (await ethers.getContractFactory('Counter', signers[0])) as Counter__factory
-    counter = await counterFactory.deploy()
-    await counter.deployed()
+    ;({ counter, alice } = await CounterFixture())
+    counter = counter.connect(alice)
     const initialCount = await counter.getCount()
 
     expect(initialCount).to.eq(0)
