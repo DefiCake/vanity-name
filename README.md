@@ -7,3 +7,11 @@ You can assume reasonable defaults for the locking amount and period. The fee to
 # How to run
 
 Just install node dependencies (`yarn` or `npm install`), then test (`yarn test` or `npm run test`)
+
+# Folder structure
+
+Project structure is self-explanatory:
+
+- Source for contracts is inside `contracts`
+- Tests are inside `test`
+- `deploy` contains the fixture system that deploys the contracts and can be used in tests or to define live network deployments
