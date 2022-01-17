@@ -1,4 +1,16 @@
 import dotenv from 'dotenv'
+declare module 'hardhat/types/runtime' {
+  interface HardhatRuntimeEnvironment {
+    timeAndMine: {
+      mine(blocks: number): Promise<void>
+      setTime(timestamp: number): Promise<void>
+      setTimeNextBlock(timestamp: number): Promise<void>
+      increaseTime(seconds: number): Promise<void>
+      setTimeIncrease(seconds: number): Promise<void>
+    }
+  }
+}
+
 dotenv.config()
 
 import '@nomiclabs/hardhat-waffle'
@@ -7,6 +19,8 @@ import '@nomiclabs/hardhat-etherscan'
 import 'solidity-coverage'
 import 'hardhat-deploy'
 import 'hardhat-deploy-ethers'
+import '@atixlabs/hardhat-time-n-mine'
+
 import { HardhatUserConfig, NetworksUserConfig } from 'hardhat/types'
 
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY

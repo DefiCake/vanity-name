@@ -1,0 +1,2 @@
+export const RESERVATION_PERIOD = 60
+export const REGISTRATION_SECONDS_PER_GWEI = 1
